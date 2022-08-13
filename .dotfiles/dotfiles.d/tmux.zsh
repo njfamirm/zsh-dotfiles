@@ -5,9 +5,7 @@ run_tmux() {
     ZSH_TMUX_AUTOSTART=false
   elif [ $startTmux = "c" ]; then
     ZSH_TMUX_AUTOCONNECT=false
-  elif [ $startTmux = "" ]; then
-
-  else
+  elif [ $startTmux != "" ]; then 
     ZSH_TMUX_AUTOCONNECT=false
     ZSH_TMUX_DEFAULT_SESSION_NAME=$startTmux
   fi
@@ -15,7 +13,6 @@ run_tmux() {
 
 if [ -z $TMUX ];then
   run_tmux
-  clear
 fi
 
 

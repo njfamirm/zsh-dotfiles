@@ -6,6 +6,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Tmux plugin config
 ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOCONNECT=true
 
 DOTFILES=~/.dotfiles
 for config_file ("$DOTFILES"/dotfiles.d/**/*.*sh); do

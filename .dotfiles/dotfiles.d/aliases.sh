@@ -11,7 +11,6 @@ alias wd=windscribe
 alias wdc="wd connect"
 alias wdd="wd disconnect"
 alias c=clear
-alias code=code-insiders
 alias q="tmux detach-client"
 alias e="exit"
 alias s=sudo
