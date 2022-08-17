@@ -4,7 +4,8 @@
 	signingkey = 23CE144CDD6A7F9F47380DBE01F68AC379738FE4
 
 [alias]
-  l = log
+  l = log --oneline -10 -- # short log
+  fl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- # Full log
   co = checkout
   cof = checkout -- 
   sw = switch
@@ -15,7 +16,7 @@
   pl = pull
   cl = clone
   ps = push
-	pa = push --all
+	pa = pull --all
   s = status -s
   f = fetch
   fa = fetch -a
@@ -26,7 +27,6 @@
   rsh = reset HEAD --
 	rsclean = reset --hard
   d = diff --color --color-words --abbrev
-  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	
 [help]
   autocorrect = 1
