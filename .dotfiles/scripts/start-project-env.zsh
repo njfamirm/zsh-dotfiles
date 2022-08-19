@@ -7,3 +7,7 @@ for d in $OPEN_AT_START; do
     tmux new-window -d -c "$HOME/$d"
   fi
 done
+
+# Start window for tunnel
+tmux new-window -d -n tunnel
+tmux send -t tunnel 'tunnel'
