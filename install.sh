@@ -1,26 +1,39 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -Eeuo pipefail
+trap "echo '❌ Error'" ERR
 
+echoStep () {
+  echo "📍 $1"
+}
+
+echoStep 'Clone dotfile repo...'
 git clone --bare --recurse-submodules --jobs 8 https://github.com/njfamirm/dotfiles ~/.dotfiles
 function dtf {
-   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+   git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
+
+echoStep 'Checkout files...'
 dtf checkout --force
-if [ $? = 0 ]; then
-  echo "Checked out config.";
-else
-  echo "Backing up pre-existing dot files.";
-fi;
+
 dtf config status.showUntrackedFiles no
+
+echoStep "Clone Submodule..."
 dtf submodule init
 dtf submodule update
 
-PACKAGES="tmux tree vim git zsh"
+if [ ! -d ~/.oh-my-zsh >/dev/null 2>&1 ];then
+  echoStep "Clone oh-my-zsh..."
+  git clone https://github.com/ohmyzsh/ohmyzsh .oh-my-zsh
+fi
 
 if [[ $OSTYPE == 'darwin'* ]]; then
+  echoStep "Install home brew..."
   curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 fi
 
-# Install packages with apt
+PACKAGES="tmux tree vim git zsh"
+
+echoStep "Install packages with package manager...."
 if command -v apt-get >/dev/null 2>&1; then
   sudo apt-get update
   sudo apt-get upgrade
@@ -34,10 +47,6 @@ elif command -v apk >/dev/null 2>&1; then
   sudo apk upgrade
   sudo apk add $PACKAGES
 else
-  echo "Cannot find supported package manager for install $PACKAGES"
+  echoErr "❌ Cannot find supported package manager for install $PACKAGES"
 fi
 
-# Install oh-my-zsh (https://github.com/ohmyzsh/ohmyzsh)
-if [ ! -d ~/.oh-my-zsh >/dev/null 2>&1 ];then
-  git clone https://github.com/ohmyzsh/ohmyzsh .oh-my-zsh
-fi
