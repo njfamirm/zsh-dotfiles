@@ -16,6 +16,10 @@ dtf submodule update
 
 PACKAGES="tmux tree vim git zsh"
 
+if [[ $OSTYPE == 'darwin'* ]]; then
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+fi
+
 # Install packages with apt
 if command -v apt-get >/dev/null 2>&1; then
   sudo apt-get update

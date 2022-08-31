@@ -7,5 +7,5 @@ my dotfiles configuration.
 > ‼️ back up from your own dotfiles before install this dotfiles !!!!
 
 ```sh
-curl https://raw.githubusercontent.com/njfamirm/dotfiles/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/njfamirm/dotfiles/main/install.sh | bash
 ```
