@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone --bare https://github.com/njfamirm/dotfiles ~/.dotfiles
+git clone --bare --recurse-submodules https://github.com/njfamirm/dotfiles ~/.dotfiles
 function dtf {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }

@@ -1,7 +1,6 @@
 [user]
-	name = S. Amir Najafi
+	name = S. Amir Mohammad Najafi
   email = njfamirm@gmail.com
-	signingkey = C9AF2D6C7AAF0BF7
 
 [alias]
   l = log --oneline -10 -- # short log
