@@ -37,13 +37,7 @@ short_pwd() {
   echo "$pwd"
 }
 
-get_ip() {
- if [ -n "$SSH_CLIENT" ]; then
-     echo "%F{#c5c5b6} in %F{#55a630}$HOST"
- fi
-}
-
-PROMPT="%F{#fcf300}%n$(get_ip) %F{#c5c5b6}at %F{#ccff33}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{reset_color} "
+PROMPT="%F{#fcf300}%n%F{#c5c5b6} in %F{#55a630}$HOST %F{#c5c5b6}at %F{#ccff33}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{reset_color} "
 PROMPT2="$(set_prompt_symbol) "
 
 # Git signed key
