@@ -1,7 +1,7 @@
 [user]
 	name = S. Amir Najafi
   email = njfamirm@gmail.com
-	signingkey = 23CE144CDD6A7F9F47380DBE01F68AC379738FE4
+	signingkey = C9AF2D6C7AAF0BF7
 
 [alias]
   l = log --oneline -10 -- # short log
@@ -74,9 +74,6 @@
   unmerged = magenta bold reverse
   untracked = red
   updated = green bold
-
-[credential]
-  helper = store
 
 [init]
 	defaultBranch = main

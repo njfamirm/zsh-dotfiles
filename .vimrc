@@ -90,16 +90,6 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'dracula/vim', { 'name': 'dracula' }
-Plugin 'itchyny/lightline.vim'
-Plugin 'editorconfig/editorconfig-vim'
-
-call vundle#end()
-
 " enable plugins and load plugin for the detected file type
 filetype plugin on
 
@@ -123,6 +113,7 @@ function! LightlineFilename()
 endfunction
 
 " Theme
+packadd! dracula
 colorscheme dracula
 let g:airline_theme='dracula'
 
