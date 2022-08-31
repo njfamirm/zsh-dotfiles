@@ -39,11 +39,7 @@ short_pwd() {
 
 get_ip() {
  if [ -n "$SSH_CLIENT" ]; then
-
-   ip="$(curl -s -m 1 ifconfig.co 2>/dev/null)"
-   if [ "$ip" != "" ]; then
-     echo "%F{#c5c5b6} in %F{#55a630}$ip"
-   fi
+     echo "%F{#c5c5b6} in %F{#55a630}$HOST"
  fi
 }
 

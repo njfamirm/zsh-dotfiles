@@ -11,11 +11,12 @@ run_tmux() {
   fi
 }
 
-if [ -z $TMUX ];then
+if [ -z $TMUX ] && [ -z $SSH_CLIENT ];then
   run_tmux
+  mkdir ~/test
+else
+  return
 fi
-
-
 
 if ! (( $+commands[tmux] )); then
   print "zsh tmux plugin: tmux not found. Please install tmux before using this plugin." >&2
