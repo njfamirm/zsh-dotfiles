@@ -1,9 +1,12 @@
-[submodule ".vim/pack/local/start/editorconfig-vim"]
+[submodule "editorconfig-vim"]
 	path = .vim/pack/local/start/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
-[submodule ".vim/pack/themes/start/dracula"]
+[submodule "dracula"]
 	path = .vim/pack/themes/start/dracula
 	url = https://github.com/dracula/vim.git
-[submodule ".vim/pack/plugins/start/lightline"]
+[submodule "lightline"]
 	path = .vim/pack/plugins/start/lightline
 	url = https://github.com/itchyny/lightline.vim.git
+[submodule "zsh-z"]
+	path = .dotfiles/dotfiles.d/plugins/zsh-z
+	url = https://github.com/agkozak/zsh-z
