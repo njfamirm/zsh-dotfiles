@@ -9,7 +9,7 @@ echoStep () {
 echoStep 'Clone dotfile repo...'
 git clone --bare --recurse-submodules --jobs 8 https://github.com/njfamirm/dotfiles ~/.dotfiles
 function dtf {
-   git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+  git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
 
 echoStep 'Checkout files...'
@@ -31,7 +31,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 fi
 
-PACKAGES="tmux tree vim git zsh"
+PACKAGES="tmux tree vim zsh"
 
 echoStep "Install packages with package manager...."
 if command -v apt-get >/dev/null 2>&1; then
