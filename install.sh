@@ -10,9 +10,9 @@ echoErr () {
   echo "❌ $1!"
 }
 
-if command -v apt-get >/dev/null 2>&1; then
+if ! command -v apt-get >/dev/null 2>&1; then
   echoErr "sudo command not found"
-  return
+  exit 127
 fi
 
 if [[ $OSTYPE == 'darwin'* ]]; then
