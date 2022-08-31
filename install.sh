@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone --bare --recurse-submodules https://github.com/njfamirm/dotfiles ~/.dotfiles
+git clone --bare --recurse-submodules --jobs 8 https://github.com/njfamirm/dotfiles ~/.dotfiles
 function dtf {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
@@ -11,6 +11,8 @@ else
   echo "Backing up pre-existing dot files.";
 fi;
 dtf config status.showUntrackedFiles no
+dtf submodule init
+dtf submodule update
 
 PACKAGES="tmux tree vim git zsh"
 
@@ -32,6 +34,6 @@ else
 fi
 
 # Install oh-my-zsh (https://github.com/ohmyzsh/ohmyzsh)
-if [ ! -d ~/.oh-my-zsh ];then
+if [ ! -d ~/.oh-my-zsh >/dev/null 2>&1 ];then
   git clone https://github.com/ohmyzsh/ohmyzsh .oh-my-zsh
 fi
