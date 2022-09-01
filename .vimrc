@@ -57,6 +57,9 @@ set smartindent
 " autoreload the file in Vim if it has been changed outside of Vim
 set autoread
 
+" Enable scroll and selection with mouse
+set mouse=a
+
 " status linei
 set laststatus=2
 set statusline=\ %F
