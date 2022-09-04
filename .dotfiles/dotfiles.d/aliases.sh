@@ -24,7 +24,8 @@ alias v=vim
 alias vi=vim
 alias cdl="cd -"
 
-alias tunnel="ssh -ND 0.0.0.0:1080 alimd"
+alias tunnel="ssh -M -S /tmp/tunnel -fND 0.0.0.0:1080 alimd" 
+alias close-tunnel="ssh -S /tmp/tunnel -O exit alimd" 
 
 function mkd() {
   mkdir -p "$1";
