@@ -37,7 +37,15 @@ short_pwd() {
   echo "$pwd"
 }
 
-PROMPT="%F{#fcf300}%n%F{#c5c5b6} in %F{#55a630}$HOST %F{#c5c5b6}at %F{#ccff33}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{reset_color} "
+host_prompt() {
+  if [ $SSH_CLIENT ]; then
+    echo "in %F{#ff5555}$HOST"
+  else
+    echo "in %F{#55a630}$HOST"
+  fi
+}
+
+PROMPT="%F{#fcf300}%n%F{#c5c5b6} $(host_prompt) %F{#c5c5b6}at %F{#ccff33}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{reset_color} "
 PROMPT2="$(set_prompt_symbol) "
 
 # Git signed key
