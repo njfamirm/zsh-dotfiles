@@ -78,6 +78,8 @@ set nocompatible
 " Set paste mode key.
 set pastetoggle=<C-p>
 
+set mouse=a
+
 " line warp for markdown
 augroup Markdown
   autocmd!
