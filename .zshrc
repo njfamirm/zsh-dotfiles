@@ -22,9 +22,9 @@ autoload -U compinit && compinit
 
 set_prompt_symbol() {
   if [ $EUID -ne "0" ]; then
-    echo "%F{#c5c5b6}$"
+    echo "%B%F{#c5c5b6}λ%b"
   else
-    echo "%F{#c5c5b6}#"
+    echo "%B%F{#c5c5b6}#%b"
   fi
 }
 
@@ -34,18 +34,18 @@ short_pwd() {
   then
     pwd='~'
   fi
-  echo "$pwd"
+  echo "%U%B$pwd%b%u"
 }
 
 host_prompt() {
   if [ $SSH_CLIENT ]; then
-    echo "in %F{#ff5555}$HOST"
+    echo "%F{#c5c5b6}in %B%F{#ff5555}$HOST%b"
   else
-    echo "in %F{#55a630}$HOST"
+    echo "%F{#c5c5b6}in %B%F{#55a630}$HOST%b"
   fi
 }
 
-PROMPT="%F{#fcf300}%n%F{#c5c5b6} $(host_prompt) %F{#c5c5b6}at %F{#ccff33}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{reset_color} "
+PROMPT="%B%F{#fcf300}%n%b $(host_prompt) %F{#c5c5b6}at %F{#ccff33}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{#ffffff} "
 PROMPT2="$(set_prompt_symbol) "
 
 # Git signed key

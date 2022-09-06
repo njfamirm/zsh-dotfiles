@@ -7,9 +7,6 @@ alias g="git"
 alias mkdir="mkdir -p"
 alias d=docker
 alias doc=docker-compose
-alias wd=windscribe
-alias wdc="wd connect"
-alias wdd="wd disconnect"
 alias c="printf '\33c\e[3J'"
 alias q="tmux detach-client"
 alias e="exit"
@@ -27,7 +24,7 @@ alias cdl="cd -"
 alias tunnel="ssh -M -S /tmp/tunnel -fND 0.0.0.0:1080 alimd" 
 alias close-tunnel="ssh -S /tmp/tunnel -O exit alimd" 
 
-function mkd() {
+function mdc() {
   mkdir -p "$1";
   cd "$1";
 }
