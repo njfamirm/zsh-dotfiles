@@ -1,5 +1,5 @@
 OPEN_AT_START=(
-  project/book/Linux-diary
+  project/Linux-diary
 )
 
 for d in $OPEN_AT_START; do
@@ -8,6 +8,3 @@ for d in $OPEN_AT_START; do
   fi
 done
 
-# Start window for tunnel
-tmux new-window -d -n tunnel
-tmux send -t tunnel 'tunnel'

@@ -1,11 +1,11 @@
 run_tmux() {
   echo -n "Start tmux?([y]es/[n]o/[c]reate new) "
   read startTmux
-  if [ $startTmux = "n" ]; then
+  if [ "$startTmux" = "n" ]; then
     ZSH_TMUX_AUTOSTART=false
-  elif [ $startTmux = "c" ]; then
+  elif [ "$startTmux" = "c" ]; then
     ZSH_TMUX_AUTOCONNECT=false
-  elif [ $startTmux != "" ]; then 
+  elif [ "$startTmux" != "" ]; then 
     ZSH_TMUX_AUTOCONNECT=false
     ZSH_TMUX_DEFAULT_SESSION_NAME=$startTmux
   fi
