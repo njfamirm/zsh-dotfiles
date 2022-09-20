@@ -114,7 +114,6 @@ endfunction
 " dracula theme
 " packadd! dracula
 " colorscheme dracula
-" let g:airline_theme='dracula'
 
 " oceanic-next theme
 " if (has("termguicolors"))
@@ -122,5 +121,6 @@ endfunction
 " endif
 " colorscheme OceanicNext
 
+packadd! dracula
 colorscheme everforest
 set background=dark
