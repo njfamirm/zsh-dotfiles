@@ -9,4 +9,7 @@
 	url = https://github.com/itchyny/lightline.vim.git
 [submodule "zsh-z"]
 	path = .dotfiles/dotfiles.d/plugins/zsh-z
-	url = https://github.com/agkozak/zsh-z
+	url = https://github.com/agkozak/zsh-z.git
+[submodule "everforest"]
+	path = .vim/pack/themes/start/everforest
+	url = https://github.com/sainnhe/everforest.git

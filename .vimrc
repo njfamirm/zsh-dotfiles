@@ -9,9 +9,6 @@ set encoding=utf-8
 " enable line number
 set number
 
-" enable type file detection
-filetype off " TODO
-
 " load an indent file for the detected file type
 filetype indent on
 
@@ -60,7 +57,7 @@ set autoread
 " Enable scroll and selection with mouse
 set mouse=a
 
-" status linei
+" status line
 set laststatus=2
 set statusline=\ %F
 set statusline+=%=
@@ -74,9 +71,6 @@ set noswapfile
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 set t_Co=256
-
-" Required for Vundel (https://github.com/VundleVim/Vundle.vim#quick-start)
-set nocompatible
 
 " Set paste mode key.
 set pastetoggle=<C-p>
@@ -116,7 +110,17 @@ function! LightlineFilename()
 endfunction
 
 " Theme
-packadd! dracula
-colorscheme dracula
-let g:airline_theme='dracula'
 
+" dracula theme
+" packadd! dracula
+" colorscheme dracula
+" let g:airline_theme='dracula'
+
+" oceanic-next theme
+" if (has("termguicolors"))
+"   set termguicolors
+" endif
+" colorscheme OceanicNext
+
+colorscheme everforest
+set background=dark
