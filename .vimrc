@@ -121,6 +121,6 @@ endfunction
 " endif
 " colorscheme OceanicNext
 
-packadd! dracula
+packadd! everforest 
 colorscheme everforest
 set background=dark
