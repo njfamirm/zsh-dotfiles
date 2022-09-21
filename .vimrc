@@ -111,6 +111,8 @@ endfunction
 
 " Theme
 
+set background=dark
+
 " dracula theme
 " packadd! dracula
 " colorscheme dracula
@@ -123,4 +125,4 @@ endfunction
 
 packadd! everforest 
 colorscheme everforest
-set background=dark
+let g:lightline = {'colorscheme' : 'everforest'}
