@@ -27,13 +27,13 @@ set_git_prompt() {
   unstaged=$(get_unstaged_files_count)
   untracked=$(get_untracked_files_count)
   if [ ! -z "$branch" ];then
-    git_prompt="[%F{#2280bf}$branch%F{reset_color}"
+    git_prompt="[%F{#88afad}$branch%F{reset_color}"
   else
     return 0
   fi
   [ ! "$staged" -eq "0" ] && git_prompt="$git_prompt,%F{#55a630}#$staged%F{reset_color}";
-  [ ! "$unstaged" -eq "0" ] && git_prompt="$git_prompt,%F{#f5d7bd}+$unstaged%F{reset_color}";
-  [ ! "$untracked" -eq "0" ] && git_prompt="$git_prompt,%F{#f94144}?$untracked%F{reset_color}";
+  [ ! "$unstaged" -eq "0" ] && git_prompt="$git_prompt,%F{#fad1ac}+$unstaged%F{reset_color}";
+  [ ! "$untracked" -eq "0" ] && git_prompt="$git_prompt,%F{#d75f5f}?$untracked%F{reset_color}";
   git_prompt="$git_prompt]"
   echo $git_prompt
 }

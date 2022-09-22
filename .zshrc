@@ -22,9 +22,9 @@ autoload -U compinit && compinit
 
 set_prompt_symbol() {
   if [ $EUID -ne "0" ]; then
-    echo "%B%F{#c5c5b6}λ%b"
+    echo "%B%F{#fdf6e3}λ%b"
   else
-    echo "%B%F{#c5c5b6}#%b"
+    echo "%B%F{#fdf6e3}#%b"
   fi
 }
 
@@ -39,14 +39,13 @@ short_pwd() {
 
 host_prompt() {
   if [ $SSH_CLIENT ]; then
-    echo "%F{#c5c5b6}in %B%F{#ff5555}$HOST%b"
+    echo "%F{#859289}in %B%F{#a7c080}$HOST%b"
   else
-    echo "%F{#c5c5b6}in %B%F{#55a630}$HOST%b"
+    echo "%F{#859289}in %B%F{#8da101}$HOST%b"
   fi
 }
 
-PROMPT="%B%F{#fcf300}%n%b $(host_prompt) %F{#c5c5b6}at %F{#ccff33}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{#ffffff} "
-PROMPT2="$(set_prompt_symbol) "
+PROMPT="%B%F{#ffd7b0}%n%b $(host_prompt) %F{#859289}at %F{#d75f5e}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{#ffffff} "
 
 # Git signed key
 export GPG_TTY=$(tty)

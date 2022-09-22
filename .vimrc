@@ -119,10 +119,11 @@ set background=dark
 
 " oceanic-next theme
 " if (has("termguicolors"))
-"   set termguicolors
+"  set termguicolors
 " endif
 " colorscheme OceanicNext
 
 packadd! everforest 
 colorscheme everforest
 let g:lightline = {'colorscheme' : 'everforest'}
+let g:everforest_background = 'hard'
