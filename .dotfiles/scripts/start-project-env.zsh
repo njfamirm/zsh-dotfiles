@@ -1,5 +1,4 @@
 OPEN_AT_START=(
-  project/Linux-diary
 )
 
 for d in $OPEN_AT_START; do
