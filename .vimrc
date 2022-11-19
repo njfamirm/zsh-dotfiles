@@ -61,7 +61,7 @@ set mouse=a
 set laststatus=2
 set statusline=\ %F
 set statusline+=%=
-set statusline+=\ %M\ %Y\ 
+set statusline+=\ %M\ %Y\
 
 " disable backup (It's very simple, always save!)
 set nobackup
@@ -81,14 +81,42 @@ augroup Markdown
   autocmd FileType markdown set wrap
 augroup END
 
-" Return to last edit position when opening files (You want this!)
+" Save and exist keymap
+inoremap <C-s> <esc>:w<cr> " save files
+nnoremap <C-s> :w<cr>
+inoremap <C-d> <esc>:wq!<cr> " save and exit
+nnoremap <C-d> :wq!<cr>
+inoremap <C-q> <esc>:qa!<cr> " quit discarding changes
+nnoremap <C-q> :qa!<cr>
+
+
+" Return to last edit position when opening files. 
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
 
+" Hide typescript build file
+let NERDTreeIgnore=['\.js$[[file]]', '\.js.map$[[file]]', '\.d.ts$[[file]]']
+
 " enable plugins and load plugin for the detected file type
 filetype plugin on
+
+call plug#begin()
+
+Plug 'itchyny/lightline.vim'
+Plug 'sainnhe/everforest', { 'as' : 'everforest'}
+Plug 'preservim/nerdtree'
+Plug 'LunarWatcher/auto-pairs'
+
+Plug 'xolox/vim-misc'
+Plug 'majutsushi/tagbar'
+
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
+
 
 " lightline.vim
 let g:lightline = {
@@ -109,21 +137,26 @@ function! LightlineFilename()
   return filename . modified
 endfunction
 
+" NerdTree
+
+autocmd VimEnter * NERDTree
+
+" In NERDTree, to open-silently file in newtab with Enter, instead of default pressing "T" (same for not silently with Tab instead of t)
+let NERDTreeMapOpenInTab='<TAB>'
+let NERDTreeMapOpenInTabSilent='<ENTER>'
+" Close on all file closed
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
+      \ && b:NERDTree.isTabTree()) | q | endif
+
+" Required after having changed the colorscheme
+hi clear SignColumn
+" In vim-airline, only display "hunks" if the diff is non-zero
+let g:airline#extensions#hunks#non_zero_only = 1
+
 " Theme
 
 set background=dark
 
-" dracula theme
-" packadd! dracula
-" colorscheme dracula
-
-" oceanic-next theme
-" if (has("termguicolors"))
-"  set termguicolors
-" endif
-" colorscheme OceanicNext
-
-packadd! everforest 
 colorscheme everforest
 let g:lightline = {'colorscheme' : 'everforest'}
 let g:everforest_background = 'hard'
