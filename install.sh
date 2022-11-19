@@ -11,7 +11,7 @@ echoErr () {
 }
 
 echoStep "Clone dotfile repo"
-git clone --bare --recurse-submodules --jobs 8 https://github.com/njfamirm/dotfiles ~/.dotfiles
+git clone --bare https://github.com/njfamirm/dotfiles ~/.dotfiles
 function dtf {
   git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
@@ -20,10 +20,6 @@ echoStep "Checkout files"
 dtf checkout --force
 
 dtf config status.showUntrackedFiles no
-
-echoStep "Clone Submodule"
-dtf submodule init
-dtf submodule update
 
 if [ ! -d ~/.oh-my-zsh >/dev/null 2>&1 ];then
   echoStep "Clone oh-my-zsh"
