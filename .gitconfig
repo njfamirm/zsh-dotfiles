@@ -12,7 +12,7 @@
   c = commit -S -m
 	cm = commit -S --amend
 	cmn = commit -S --amend --no-edit
-  pl = pull
+  pl = pull --prune --progress --autostash
   cl = clone
   ps = push
 	pa = pull --all
@@ -87,3 +87,5 @@
 [pull]
 	rebase = false
 
+[gpg]
+	program = /opt/homebrew/bin/gpg
