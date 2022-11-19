@@ -47,6 +47,7 @@ host_prompt() {
 
 PROMPT="%B%F{#ffd7b0}%n%b $(host_prompt) %F{#859289}at %F{#d75f5e}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{#ffffff} "
 
+
 # Git signed key
 export GPG_TTY=$(tty)
 
