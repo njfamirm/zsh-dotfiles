@@ -1,15 +1,3 @@
-[submodule "editorconfig-vim"]
-	path = .vim/pack/local/start/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
-[submodule "dracula"]
-	path = .vim/pack/themes/start/dracula
-	url = https://github.com/dracula/vim.git
-[submodule "lightline"]
-	path = .vim/pack/plugins/start/lightline
-	url = https://github.com/itchyny/lightline.vim.git
 [submodule "zsh-z"]
 	path = .dotfiles/dotfiles.d/plugins/zsh-z
 	url = https://github.com/agkozak/zsh-z.git
-[submodule "everforest"]
-	path = .vim/pack/themes/start/everforest
-	url = https://github.com/sainnhe/everforest.git
