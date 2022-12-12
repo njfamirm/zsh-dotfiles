@@ -115,6 +115,8 @@ Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
+Plug 'leafgarland/typescript-vim'
+
 call plug#end()
 
 
