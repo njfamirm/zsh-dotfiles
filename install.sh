@@ -2,59 +2,86 @@
 set -Eeuo pipefail
 trap "echo ' Error'" ERR
 
+echo -e "
+██████╗░░█████╗░████████╗███████╗██╗██╗░░░░░███████╗░██████╗
+██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██║██║░░░░░██╔════╝██╔════╝
+██║░░██║██║░░██║░░░██║░░░█████╗░░██║██║░░░░░█████╗░░╚█████╗░
+██║░░██║██║░░██║░░░██║░░░██╔══╝░░██║██║░░░░░██╔══╝░░░╚═══██╗
+██████╔╝╚█████╔╝░░░██║░░░██║░░░░░██║███████╗███████╗██████╔╝
+╚═════╝░░╚════╝░░░░╚═╝░░░╚═╝░░░░░╚═╝╚══════╝╚══════╝╚═════╝░
+"
+
+echoErr() {
+  echo -e "🔴 $@"
+}
+
+echoInfo() {
+  echo -e "🟡 $@"
+}
+
+echoStep() {
+  echo -e "\n🔨 $@"
+}
+
+echoSuccess() {
+  echo -e "✅ $@"
+}
+
 DOTFILES=".dotfiles"
 
-echo "Install dotfiles..."
+echoStep "Install dotfiles"
 if [ ! -d "~/$DOTFILES" >/dev/null 2>&1 ];then
-  echo "Clone dotfiles..."
+  echoInfo "Clone dotfiles"
   git clone --bare https://github.com/njfamirm/dotfiles "~/$DOTFILES"
 
 
   function dtf {
     git --git-dir="~/$DOTFILES/" --work-tree="~/" $@
   }
-  echo "Dotfiles installed..."
+
+  echoSuccess "Dotfiles installed"
+
+  echoStep "Checkout dotfiles files"
+  dtf checkout --force
+  echoSuccess "Dotfiles Checkouted"
 else
-  echo "Dotfiles already installed in \`$DOTFILES\`"
-  echo "Update dotfiles..."
+  echoInfo "Dotfiles already installed in \`$DOTFILES\`"
+  echoInfo "Update dotfiles"
 
   function dtf {
     git --git-dir="~/$DOTFILES/" --work-tree="~/" $@
   }
 
   dtf pull --prune --progress --autostash
-  echo "Dotfiles updated..."
+  echoSuccess "Dotfiles updated"
 fi
-
-
-echo "Checkout files..."
-dtf checkout --force
 
 dtf config status.showUntrackedFiles no
 
-echo "Install oh-my-zsh..."
+echoStep "Install oh-my-zsh..."
+OMZ_PATH=".oh-my-zsh"
 if [ ! -d ~/.oh-my-zsh >/dev/null 2>&1 ];then
-  git clone https://github.com/ohmyzsh/ohmyzsh .oh-my-zsh
-  echo "oh-my-zsh installed..."
+  git clone https://github.com/ohmyzsh/ohmyzsh $OMZ_PATH
+  echoSuccess "oh-my-zsh installed"
 else
-  echo "oh-my-zsh was already installed."
-  echo "Update oh-my-zsh..."
-  omz update
-  echo "oh-my-zsh updated..."
+  echoInfo "oh-my-zsh was already installed"
+  echoInfo "Update oh-my-zsh..."
+  git -C $OMZ_PATH pl
+  echoSuccess "oh-my-zsh updated"
 fi
 
 # install z command
 Z_COMMAND_PATH=$DOTFILES/dotfiles.d/plugin/z/
-echo "Install z command..."
+echoStep "Install z command"
 if [ ! -d "$Z_COMMAND_PATH" >/dev/null 2>&1 ];then
   git clone https://github.com/rupa/z.git $Z_COMMAND_PATH
-  echo "Z command installed..."
+  echoSuccess "Z command installed"
 else
-  echo "Z was already installed..."
-  echo "Update z command..."
+  echoInfo "Z was already installed"
+  echoInfo "Update z command"
 
   git -C $Z_COMMAND_PATH pl
-  echo "Z command updated..."
+  echoSuccess "Z command updated"
 fi
 
 # sudo ~/.dotfiles/install-packages.sh
