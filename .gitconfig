@@ -4,9 +4,9 @@
 
 [alias]
   l = log --oneline -10 -- # short log
-  fl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- # Full log
+  fl = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- # full log
   co = checkout
-  cof = checkout -- 
+  cof = checkout --
   sw = switch
   a = add
   c = commit -S -m
@@ -26,7 +26,7 @@
   rsh = reset HEAD --
 	rsclean = reset --hard
   d = diff --color --color-words --abbrev
-	
+
 [help]
   autocorrect = 1
 
@@ -80,7 +80,7 @@
 [core]
   pager = less -FRX
 	editor = vim
-  autocrlf = input 
+  autocrlf = input
 
 [advice]
 	addEmptyPathspec = false
@@ -89,5 +89,6 @@
 	rebase = false
 
 [gpg]
+  # FIXME:
 	program = /opt/homebrew/bin/gpg
 

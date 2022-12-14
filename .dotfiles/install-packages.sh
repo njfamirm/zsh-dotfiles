@@ -7,38 +7,38 @@ if [ "$EUID" != 0 ]
   exit 2
 fi
 
-echoStep () {
-  echo "$1..."
-}
-
-echoErr () {
-  echo " $1!"
-}
-
 if [[ $OSTYPE == 'darwin'* ]]; then
-  echoStep "Install home brew"
+  echo "Install home brew..."
   curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 fi
 
 PACKAGES="tmux tree vim zsh git sudo"
 
-echoStep "Install packages with package manager"
+echo "Select package manager..."
 if command -v apt-get >/dev/null 2>&1; then
+  echo "Install packages with apt"
   apt-get update
   apt-get upgrade
   apt-get -y install $PACKAGES
 elif command -v brew >/dev/null 2>&1; then
+  echo "Install packages with brew"
   brew update
   brew upgrade
   brew install $PACKAGES
 elif command -v apk >/dev/null 2>&1; then
+  echo "Install packages with apk"
   apk update
   apk upgrade
   apk add $PACKAGES
 else
-  echoErr "Cannot find package manager"
+  echo "Cannot find package manager!"
 fi
 
-# Install vim plugin
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PlugInstall +qall
+# Install vimPlug
+VIMPLUG_PATH="~/.vim/autoload/plug.vim"
+if [ ! -d "$VIMPLUG_PATH" >/dev/null 2>&1 ];then
+  curl -fLo $VIMPLUG_PATH --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+# FIXME:
+# vim +PlugInstall +qall
