@@ -1,3 +1,0 @@
-[submodule "zsh-z"]
-	path = .dotfiles/dotfiles.d/plugins/zsh-z
-	url = https://github.com/agkozak/zsh-z.git
