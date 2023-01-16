@@ -66,7 +66,7 @@ if [ ! -d ~/.oh-my-zsh >/dev/null 2>&1 ];then
 else
   echoInfo "oh-my-zsh was already installed"
   echoInfo "Update oh-my-zsh..."
-  git -C $OMZ_PATH pl
+  git -C $OMZ_PATH pull
   echoSuccess "oh-my-zsh updated"
 fi
 
@@ -80,7 +80,7 @@ else
   echoInfo "Z was already installed"
   echoInfo "Update z command"
 
-  git -C $Z_COMMAND_PATH pl
+  git -C $Z_COMMAND_PATH pull
   echoSuccess "Z command updated"
 fi
 
