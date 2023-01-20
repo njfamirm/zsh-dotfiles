@@ -84,4 +84,4 @@ else
   echoSuccess "Z command updated"
 fi
 
-# sudo ~/.dotfiles/install-packages.sh
+sudo ~/.dotfiles/install-packages.sh

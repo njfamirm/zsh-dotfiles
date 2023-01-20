@@ -14,8 +14,6 @@ for config_file ("$DOTFILES"/dotfiles.d/**/*.*sh); do
 done
 unset config_file
 
-# zsh-z
-set $_Z_MAX_SCORE 1000
 autoload -U compinit && compinit
 
 # prompt
@@ -63,4 +61,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-echo "salam2"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
