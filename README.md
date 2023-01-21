@@ -9,3 +9,6 @@ my dotfiles configuration.
 ```sh
 curl -fsSL https://raw.githubusercontent.com/njfamirm/dotfiles/main/install.sh | bash
 ```
+## To-do
+- backup before installation.
+- fix install script issue
