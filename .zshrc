@@ -51,11 +51,12 @@ export GPG_TTY=$(tty)
 
 ZSH_DISABLE_COMPFIX=true
 
-# TODO
 # env
-# export GOPATH="/home/njfamirm/go"
-# export GOROOT="/usr/lib/go"
-# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+export GOPATH=$HOME/go
+# export GOROOT=/opt/homebrew/bin/go
+# export PATH=$PATH:$GOROOT/bin:$GOPATH
+export PATH=$PATH:$GOPATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
