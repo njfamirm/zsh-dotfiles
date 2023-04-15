@@ -17,7 +17,6 @@ unset config_file
 autoload -U compinit && compinit
 
 # prompt
-
 set_prompt_symbol() {
   if [ $EUID -ne "0" ]; then
     echo "%B%F{#fdf6e3}λ%b"

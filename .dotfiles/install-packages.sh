@@ -1,25 +1,28 @@
 #!/usr/bin/env bash
+
 set -Eeuo pipefail
 trap "echo ' Error'" ERR
 
-if [ "$EUID" != 0 ]
-  then echo "Please run as root."
-  exit 2
-fi
+# if [ "$EUID" != 0 ]
+#   then echo "Please run as root."
+#   exit 2
+# fi
 
 if [[ $OSTYPE == 'darwin'* ]]; then
-  echo "Install home brew..."
-  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Install home brew..."
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+  fi
 fi
 
-PACKAGES="tmux tree vim zsh git sudo"
+PACKAGES="tmux tree vim zsh git sudo curl wget"
 
 echo "Select package manager..."
 if command -v apt-get >/dev/null 2>&1; then
   echo "Install packages with apt"
-  apt-get update
-  apt-get upgrade
-  apt-get -y install $PACKAGES
+  sudo apt-get update
+  sudo apt-get upgrade
+  sudo apt-get -y install $PACKAGES
 elif command -v brew >/dev/null 2>&1; then
   echo "Install packages with brew"
   brew update
@@ -27,9 +30,9 @@ elif command -v brew >/dev/null 2>&1; then
   brew install $PACKAGES
 elif command -v apk >/dev/null 2>&1; then
   echo "Install packages with apk"
-  apk update
-  apk upgrade
-  apk add $PACKAGES
+  sudo apk update
+  sudo apk upgrade
+  sudo apk add $PACKAGES
 else
   echo "Cannot find package manager!"
 fi
