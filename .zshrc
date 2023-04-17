@@ -1,64 +1,20 @@
-export ZSH="$HOME/.oh-my-zsh"
+autoload -U compinit && compinit
+setopt prompt_subst
 
-zstyle ':omz:update' mode reminder
+## History command configuration
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
 
-source $ZSH/oh-my-zsh.sh
-
-# Tmux plugin config
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=true
-
+# load all zsh files
 DOTFILES=~/.dotfiles
-for config_file ("$DOTFILES"/dotfiles.d/**/*.*sh); do
-  source "$config_file"
+for config_file ($DOTFILES/dotfiles.d/**/*.*sh); do
+  source $config_file
 done
 unset config_file
 
-autoload -U compinit && compinit
-
-# prompt
-set_prompt_symbol() {
-  if [ $EUID -ne "0" ]; then
-    echo "%B%F{#fdf6e3}λ%b"
-  else
-    echo "%B%F{#fdf6e3}#%b"
-  fi
-}
-
-short_pwd() {
-  pwd="${${(s:/:)PWD}[-2]}/${PWD:t}"
-  if [ "$PWD" = "$HOME" ]
-  then
-    pwd='~'
-  fi
-  echo "%U%B$pwd%b%u"
-}
-
-host_prompt() {
-  if [ $SSH_CLIENT ]; then
-    echo "%F{#859289}in %B%F{#a7c080}$HOST%b"
-  else
-    echo "%F{#859289}in %B%F{#8da101}$HOST%b"
-  fi
-}
-
 PROMPT="%B%F{#ffd7b0}%n%b $(host_prompt) %F{#859289}at %F{#d75f5e}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{#ffffff} "
 
-
-# Git signed key
-export GPG_TTY=$(tty)
-
-ZSH_DISABLE_COMPFIX=true
-
-# env
-
-export GOPATH=$HOME/go
-# export GOROOT=/opt/homebrew/bin/go
-# export PATH=$PATH:$GOROOT/bin:$GOPATH
-export PATH=$PATH:$GOPATH
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
