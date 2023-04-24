@@ -51,18 +51,6 @@ else
 fi
 dtf config status.showUntrackedFiles no
 
-echoStep "Install oh-my-zsh..."
-OMZ_PATH=".oh-my-zsh"
-if [ ! -d $HOME/.oh-my-zsh ] >/dev/null 2>&1; then
-  git clone https://github.com/ohmyzsh/ohmyzsh $OMZ_PATH
-  echoSuccess "oh-my-zsh installed."
-else
-  echoInfo "oh-my-zsh was already installed."
-  echoInfo "Update oh-my-zsh..."
-  git -C $OMZ_PATH pull
-  echoSuccess "oh-my-zsh updated."
-fi
-
 # install z command
 Z_COMMAND_PATH=$DOTFILES/dotfiles.d/plugins/z/
 echoStep "Install z command"

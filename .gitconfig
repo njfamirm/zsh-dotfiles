@@ -9,7 +9,7 @@
   cof = checkout --
   sw = switch
   a = add
-  st = stash
+  st = stash -u
   stp = stash pop 
   c = commit -S -m
 	cm = commit -S --amend
@@ -20,6 +20,9 @@
 	pa = pull --all
   s = status -s
   f = fetch
+  r = rebase
+  rc = rebase --continue
+  ra = rebase --abort
   fa = fetch -a
   b = branch
 	ba = branch -avv
