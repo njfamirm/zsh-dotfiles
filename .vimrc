@@ -117,6 +117,8 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'leafgarland/typescript-vim'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 call plug#end()
 
 

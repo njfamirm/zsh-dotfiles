@@ -4,7 +4,7 @@ gsep () {
   git switch -c feat/$1 origin/next && \
   shift && \
   git cherry-pick $@ && \
-  git push && \
-  gh pr create -w && \
+  git push -u && \
+  gh pr create --assignee @me --base next --fill --web \
   g switch $currentBranch;
 }
