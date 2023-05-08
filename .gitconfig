@@ -16,7 +16,7 @@
 	cmn = commit -S --amend --no-edit
   pl = pull --prune --progress --autostash --rebase
   cl = clone
-  ps = push
+  p = push
 	pa = pull --all
   s = status -s
   f = fetch

@@ -5,6 +5,6 @@ gsep () {
   shift && \
   git cherry-pick $@ && \
   git push -u && \
-  gh pr create --assignee @me --base next --fill --web \
-  g switch $currentBranch;
+  gh pr create -a @me --base next --fill --web && \
+  git switch $currentBranch;
 }

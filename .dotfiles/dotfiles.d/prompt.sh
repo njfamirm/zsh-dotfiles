@@ -1,45 +1,38 @@
-#!/usr/bin/zsh
-
-# git prompt generator
-# "#" means that staged
-# "+" means that unstaged
-# "?" means that untracked
-
-get_branch() {
-  echo $(git branch --show-current 2>/dev/null)
-}
-
-get_staged_files_count() {
-  echo $(git diff --cached --numstat 2>/dev/null | wc -l)
-}
-
-get_unstaged_files_count() {
- echo $(git diff --name-only 2>/dev/null | wc -l)
-}
-
-get_untracked_files_count() {
-  echo $(git ls-files --others --exclude-standard 2>/dev/null | wc -l)
-}
-
 set_git_prompt() {
-  branch=$(get_branch)
-  staged=$(get_staged_files_count)
-  unstaged=$(get_unstaged_files_count)
-  untracked=$(get_untracked_files_count)
-  if [ ! -z "$branch" ];then
-    git_prompt="[%F{#88afad}$branch%F{reset_color}"
-  else
+  local branch=$(git branch --show-current 2>/dev/null)
+  if [[ ! -n "$branch" ]]; then
     return 0
   fi
-  [ ! "$staged" -eq "0" ] && git_prompt="$git_prompt,%F{#55a630}#$staged%F{reset_color}";
-  [ ! "$unstaged" -eq "0" ] && git_prompt="$git_prompt,%F{#fad1ac}+$unstaged%F{reset_color}";
-  [ ! "$untracked" -eq "0" ] && git_prompt="$git_prompt,%F{#d75f5f}?$untracked%F{reset_color}";
-  git_prompt="$git_prompt]"
-  echo $git_prompt
+  local git_prompt=""
+
+  local staged=$(git diff --cached --numstat | wc -l | tr -d ' ')
+  local unstaged=$(git diff --numstat | grep -v '^\s*0\s' | wc -l | tr -d ' ')
+  local untracked=$(git ls-files --others --exclude-standard | wc -l | tr -d ' ')
+  local head=$(git rev-parse --short HEAD 2>/dev/null)
+
+  if [[ "$staged" -ne 0 ]]; then
+    git_prompt="$git_prompt%F{#55a630}#$staged%F{reset_color}"
+  fi
+
+  if [[ "$unstaged" -ne 0 ]]; then
+    git_prompt="$git_prompt%F{#fad1ac}+$unstaged%F{reset_color}"
+  fi
+
+  if [[ "$untracked" -ne 0 ]]; then
+    git_prompt="$git_prompt%F{#d75f5f}?$untracked%F{reset_color}"
+  fi
+
+  if [[ "$staged" -eq 0 && "$unstaged" -eq 0 && "$untracked" -eq 0 ]]; then
+    git_prompt="%B%F{#88afad}$branch%b%F{reset_color}:(%F{#859289}%B$head%b%F{reset_color})"
+  else
+    git_prompt="%B%F{#88afad}$branch%b%F{reset_color}:(%F{#859289}%B$head%b%F{reset_color}) [$git_prompt]"
+  fi
+  
+  echo "$git_prompt"
 }
 
 set_prompt_symbol() {
-  if [ $EUID -ne "0" ]; then
+  if [ "$EUID" -ne "0" ]; then
     echo "%B%F{#fdf6e3}λ%b"
   else
     echo "%B%F{#f2b205}#%b"
@@ -47,18 +40,17 @@ set_prompt_symbol() {
 }
 
 short_pwd() {
-  pwd="${${(s:/:)PWD}[-2]}/${PWD:t}"
-  if [ "$PWD" = "$HOME" ]
-  then
-    pwd='~'
-  fi
+  local pwd="${${(s:/:)PWD}[-2]}/${PWD:t}"
+  [ "$PWD" = "$HOME" ] && pwd='~'
   echo "%U%B$pwd%b%u"
 }
 
 host_prompt() {
-  if [ $SSH_CLIENT ]; then
-    echo "%F{#859289}in %B%F{#0191a1}$HOST%b"
-  else
-    echo "%F{#859289}in %B%F{#8da101}$HOST%b"
+  local  color="#0191a1"
+  if [ "$SSH_CLIENT" ]; then
+    color="#8da101"
   fi
+  echo "%F{#859289} in %B%F{$color}$HOST%b"
 }
+
+PROMPT="%B%F{#ffd7b0}%n%b$(host_prompt) %F{#859289}at %F{#d75f5e}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{#ffffff} "
