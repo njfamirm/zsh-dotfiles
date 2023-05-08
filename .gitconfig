@@ -96,11 +96,9 @@
 [pull]
 	rebase = false
 
-[gpg]
-  # FIXME:
-	program = /opt/homebrew/bin/gpg
-
 [commit]
 	gpgSign = true
 [fetch]
 	prune = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
