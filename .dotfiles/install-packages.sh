@@ -39,6 +39,8 @@ elif command -v brew >/dev/null 2>&1; then
       brew install $i
     fi
   done
+  brew cleanup --prune=all
+  brew autoremove
 elif command -v apk >/dev/null 2>&1; then
   PACKAGES="tmux tree vim zsh git sudo curl wget fzf"
   echo "Install packages with apk"

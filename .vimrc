@@ -121,6 +121,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 call plug#end()
 
+set rtp+=/opt/homebrew/opt/fzf
 
 " lightline.vim
 let g:lightline = {
