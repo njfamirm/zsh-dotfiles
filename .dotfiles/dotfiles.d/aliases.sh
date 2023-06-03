@@ -9,8 +9,7 @@ alias c="printf '\33c\e[3J'"
 alias q="tmux detach-client"
 alias e="exit"
 alias s=sudo
-alias ls="ls --color='auto'"
-alias ll="ls -altrh --color='auto'"
+alias ls="ls -ltrhA"
 alias m=make
 alias tm="tmux"
 alias reload="exec zsh"
