@@ -106,7 +106,7 @@ call plug#begin()
 
 Plug 'itchyny/lightline.vim'
 Plug 'sainnhe/everforest', { 'as' : 'everforest'}
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 Plug 'LunarWatcher/auto-pairs'
 
 Plug 'xolox/vim-misc'
@@ -144,14 +144,14 @@ endfunction
 
 " NerdTree
 
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 
 " In NERDTree, to open-silently file in newtab with Enter, instead of default pressing "T" (same for not silently with Tab instead of t)
-let NERDTreeMapOpenInTab='<TAB>'
-let NERDTreeMapOpenInTabSilent='<ENTER>'
+" let NERDTreeMapOpenInTab='<TAB>'
+" let NERDTreeMapOpenInTabSilent='<ENTER>'
 " Close on all file closed
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
-      \ && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
+"       \ && b:NERDTree.isTabTree()) | q | endif
 
 " Required after having changed the colorscheme
 hi clear SignColumn

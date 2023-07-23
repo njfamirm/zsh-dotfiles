@@ -1,5 +1,5 @@
 OPEN_AT_START=(
-  "project/alwatr"
+  "repo/alwatr"
 )
 
 function devEnv() {
