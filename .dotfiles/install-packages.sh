@@ -42,7 +42,7 @@ elif command -v brew >/dev/null 2>&1; then
   brew cleanup --prune=all
   brew autoremove
 elif command -v apk >/dev/null 2>&1; then
-  PACKAGES="tmux tree vim zsh git sudo curl wget fzf"
+  PACKAGES="tmux tree vim zsh git sudo curl wget fzf shadow"
   echo "Install packages with apk"
   sudo apk update
   sudo apk upgrade

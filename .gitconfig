@@ -21,10 +21,11 @@
 	pa = pull --all
   s = status -s
   f = fetch
+  fa = fetch --all
   r = rebase
   rc = rebase --continue
   ra = rebase --abort
-  fa = fetch -a
+  m = merge
   b = branch
 	ba = branch -avv
   chp = cherry-pick
@@ -95,8 +96,8 @@
 
 [core]
   pager = less -FRX
-  editor = vim
-  # editor = code
+  # editor = vim
+  editor = code --wait
   autocrlf = input
 
 [advice]

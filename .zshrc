@@ -23,3 +23,5 @@ autoload -Uz compinit && compinit
 autoload -Uz bashcompinit && bashcompinit
 autoload -Uz select-word-style
 select-word-style bash
+
+# export http_proxy='http://127.0.0.1:2081'

@@ -3,7 +3,6 @@ export HISTORY_IGNORE="(ls|pwd|c|clear|l)"
 export GPG_TTY=$(tty)
 ZSH_DISABLE_COMPFIX=true
 
-
 # Tmux plugin config
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOCONNECT=true
@@ -11,7 +10,6 @@ ZSH_TMUX_AUTOCONNECT=true
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Go
 export GOPATH=$HOME/go
