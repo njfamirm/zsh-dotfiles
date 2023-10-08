@@ -18,6 +18,7 @@
   pl = pull --prune --progress --autostash --rebase
   cl = clone
   p = push
+  pt = push --follow-tags
 	pa = pull --all
   s = status -s
   f = fetch
@@ -108,9 +109,11 @@
 
 [commit]
 	gpgSign = true
+  
 [fetch]
 	prune = true
-[gpg]
-	program = /opt/homebrew/bin/gpg
+
 [diff]
 	tool = vscode
+[gpg]
+	program = /opt/homebrew/bin/gpg
