@@ -16,6 +16,8 @@ for config_file ($DOTFILES/dotfiles.d/**/*.*sh); do
 done
 unset config_file
 
+source $DOTFILES/secret.env
+
 # PROMPT="%B%F{#f8f8f2}%n%b $(host_prompt) %F{#f1fa8c}at %F{#bd93f9}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{#f8f8f2} "
 # PROMPT="%B%F{#ffd7b0}%n%b $(host_prompt) %F{#859289}at %F{#d75f5e}"'$(short_pwd)'"%F{reset_color} "'$(set_git_prompt)'$'\n'"$(set_prompt_symbol)%F{#ffffff} "
 

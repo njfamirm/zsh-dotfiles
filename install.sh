@@ -55,14 +55,11 @@ dtf config status.showUntrackedFiles no
 Z_COMMAND_PATH=$DOTFILES/dotfiles.d/plugins/z/
 echoStep "Install z command"
 if [ ! -d "$Z_COMMAND_PATH" ] >/dev/null 2>&1; then
-  git clone https://github.com/rupa/z.git $Z_COMMAND_PATH
+  mkdir -p "$Z_COMMAND_PATH"
+  curl -o "$Z_COMMAND_PATH/z.sh" https://raw.githubusercontent.com/rupa/z/v1.9/z.sh
   echoSuccess "Z command installed"
 else
   echoInfo "Z was already installed"
-  echoInfo "Update z command"
-
-  git -C $Z_COMMAND_PATH pull
-  echoSuccess "Z command updated"
 fi
 
 $HOME/.dotfiles/install-packages.sh
