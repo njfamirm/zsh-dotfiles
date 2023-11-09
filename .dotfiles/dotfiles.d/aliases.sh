@@ -28,15 +28,4 @@ alias chrome-cors="open -n -a /Applications/Google\ Chrome\ Beta.app/Contents/Ma
 # alias tunnel="close-tunnel >/dev/null 2>&1; ssh -M -S /tmp/tunnel -fND 0.0.0.0:1080 srv3"
 # alias close-tunnel="ssh -S /tmp/tunnel -O exit srv3"
 
-function mdc() {
-  mkdir -p "$1";
-  cd "$1";
-}
-
 alias dtf='/usr/bin/git --git-dir=$DOTFILES --work-tree=$HOME'
-
-# Config file
-alias zshconf="vim ~/.zshrc"
-alias tmuxconf="vim ~/.tmux.conf"
-alias vimconf="vim ~/.vimrc"
-alias gitconf="vim ~/.gitconfig"
